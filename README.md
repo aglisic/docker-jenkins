@@ -1,21 +1,10 @@
 docker-jenkins
 ==============
 This is dockerized jenkins with docker client installed, so jenkins can use docker from host machine.
-This is done by mounting docker.sock from host to docker-jenkins container. 
-For more info about the jeniks used here go to:
-https://github.com/cloudbees/jenkins-ci.org-docker
-
+This is done by communication via docker host port 2375.
 
 
 Sample use
 ==============
-sudo docker run -d 
-  -p 8080:8080 
-  -v /var/run/docker.sock:/var/run/docker.sock 
-  -v /var/jenkins_home:/var/jenkins_home 
-  aglisic/djenkins
+docker run --net=host --add-host=moby:127.0.0.1 --name djenkins -p 8080:8080 -v {your local jenkins_home}:/var/jenkins_home aglisic/docker-jenkins
 
-Info
-=============
-Keep in mind that the docker version from host must match version used here.
-Change the DOCKER_VERSION env variable, to match this.
