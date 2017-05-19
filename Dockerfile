@@ -14,5 +14,6 @@ ENV PATH "$PATH:/opt/docker/"
 ENV DOCKER_HOST "tcp://dockerhost:2375"
 
 COPY setup.sh /usr/local/bin/setup.sh
+RUN chmod +x /usr/local/bin/setup.sh
 
 ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/setup.sh"]
