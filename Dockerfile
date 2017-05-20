@@ -1,4 +1,4 @@
-FROM jenkins:2.32.2
+FROM jenkins:2.46.2
 
 ARG docker_version=17.03.1-ce
 USER root
